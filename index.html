@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
 <head>
+  <!-- Set character encoding and viewport for responsiveness -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Morais' place</title>
-  <link rel="icon" href="assets/favicon.ico">
+  
+  <!-- Page title and favicon -->
+  <title>Morais'</title>
+  <link rel="icon" href="media/4.png">
+
+  <!-- Link to Bulma CSS framework -->
   <link rel="stylesheet" href="bulma/css/bulma.css">
+
+  <!-- Dark mode stylesheet for Bulma -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma-prefers-dark" />
+
+  <!-- Linearicons font -->
   <link rel="stylesheet" href="https://unpkg.com/linearicons@1.0.2/dist/web-font/style.css">
+
+  <!-- Font Awesome icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
-<body>
+<body style="background-color: black; color: white;"> <!-- Change background color to black and font color to white -->
 <nav class="navbar navbar has-shadow is-spaced">
   <div class="container">
     <div class="navbar-brand">
       <script type="text/javascript">
+        // JavaScript function to toggle active class on click
         function toggleClass(el, target) {
           el.classList.toggle('is-active');
           const $target = document.getElementById(target);
           $target.classList.toggle('is-active');
         }
       </script>
+      <!-- Navbar burger icon for mobile -->
       <a role="button" onclick="toggleClass(this, 'navMenu')" class="navbar-burger" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -29,6 +42,7 @@
     </div>
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-start">
+        <!-- Navbar items with Font Awesome icons -->
         <a class="navbar-item" href="index.html">
           <span class="icon has-text-primary">
             <span class="fa fa-home"></span>
@@ -49,6 +63,7 @@
         </a>
       </div>
       <div class="navbar-end">
+        <!-- External links with Font Awesome icons -->
         <a class="navbar-item" href="https://www.goodreads.com/user/show/50130199-jo-o-morais">
           <span class="icon has-text-primary">
             <span class="fa fa-rss"></span>
@@ -68,6 +83,7 @@
 <section class="section">
   <div class="container">
     <header>
+        <!-- Main title -->
         <h1 class="title">
           João P Morais
         </h1>
@@ -79,11 +95,13 @@
   <div class="columns">
       <div class="column">
           <div class="content">
+              <!-- Image with 100% width -->
               <img src="media/photo2.jpg" style="width:100%"></img>
           </div>
       </div>
       <div class="column">
           <div class="content">
+              <!-- Curriculum Vitae and list of likes -->
               <h2> Curriculum Vitae </h2>
               <a href="media/cviv.pdf" class="is-size-5">PDF</a>
               <h2> What you like </h2>
@@ -99,6 +117,7 @@
 </section>
 <footer class="footer">
   <div class="content has-text-centered">
+    <!-- Footer text -->
     <p>
       This is a <strong>TEST</strong>.
     </p>
