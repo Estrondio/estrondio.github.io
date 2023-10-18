@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
 <head>
-  <!-- Set character encoding and viewport for responsiveness -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Page title and favicon -->
-  <title>Morais'</title>
-  <link rel="icon" href="media/4.png">
-
-  <!-- Link to Bulma CSS framework -->
+  <title>Morais' place</title>
+  <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="bulma/css/bulma.css">
-
-  <!-- Dark mode stylesheet for Bulma -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/bulma-prefers-dark" />
-
-  <!-- Linearicons font -->
   <link rel="stylesheet" href="https://unpkg.com/linearicons@1.0.2/dist/web-font/style.css">
-
-  <!-- Font Awesome icons -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style>
+    /* Add custom styles for the black bars */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+
+    /* Customize title styles */
+    h1 {
+      font-family: 'Times New Roman', serif;
+      font-size: 2.5em; /* Adjust size as needed */
+    }
+
+    /* Customize other text styles */
+    h2, h3 {
+      font-family: 'Century Gothic', sans-serif;
+      color: white;
+    }
+
+    /* Customize quote styles */
+    .quote {
+      font-family: 'Century Gothic', sans-serif;
+      font-size: 1.5em; /* Adjust size as needed */
+      color: white;
+      text-align: center;
+    }
+  </style>
 </head>
 <body style="background-color: black; color: white;"> <!-- Change background color to black and font color to white -->
 <nav class="navbar navbar has-shadow is-spaced">
@@ -83,6 +101,7 @@
 <section class="section">
   <div class="container">
     <header>
+      <!-- Customize the main title -->
         <!-- Main title -->
         <h1 class="title">
           João P Morais
@@ -95,12 +114,17 @@
   <div class="columns">
       <div class="column">
           <div class="content">
+            <!-- Add a quote below the photo -->
               <!-- Image with 100% width -->
-              <img src="media/photo2.jpg" style="width:100%"></img>
+              <img src="media/photo2.jpg" style="width:100%"alt="João P Morais photo"></img>
+              <div class="quote">
+                "-We Don’t See Things As They Are, We See Them As We Are - Anaïs Nin / Babylonian Talmud"
+              </div>
           </div>
       </div>
       <div class="column">
           <div class="content">
+            <!-- Customize other content -->
               <!-- Curriculum Vitae and list of likes -->
               <h2> Curriculum Vitae </h2>
               <a href="media/cviv.pdf" class="is-size-5">PDF</a>
