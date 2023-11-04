@@ -1,80 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go/No-Go Task</title>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
 
-        #container {
-            text-align: center;
-        }
+    #cue {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-        #score {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+    #score {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-        #cue {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    button {
+      font-size: 16px;
+      margin: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Go/No-Go Task</title>
 </head>
 <body>
-    <div id="container">
-        <div id="score">Score: <span id="scoreValue">0</span></div>
-        <div id="cue"></div>
-        <button onclick="respond('go')">Go</button>
-        <button onclick="respond('no-go')">No-Go</button>
-    </div>
+  <div id="startScreen">
+    <h1>Go/No-Go Task</h1>
+    <button onclick="startGame()">Start</button>
+  </div>
 
-    <script>
-        const cues = ['go', 'no-go'];
-        let score = 0;
-        let trialCount = 0;
+  <div id="gameScreen" style="display: none;">
+    <div id="cue">Get ready...</div>
+    <button id="goButton" onclick="checkResponse('go')">Go</button>
+    <button id="noGoButton" onclick="checkResponse('noGo')">No-Go</button>
+    <div id="score">Score: 0</div>
+  </div>
 
-        function startTrial() {
-            const cueType = cues[Math.floor(Math.random() * cues.length)];
-            document.getElementById('cue').innerText = cueType.toUpperCase();
-        }
+  <div id="endScreen" style="display: none;">
+    <h1>Game Over!</h1>
+    <p>Your final score is <span id="finalScore">0</span></p>
+    <button onclick="restartGame()">Restart</button>
+  </div>
 
-        function respond(response) {
-            const cueType = document.getElementById('cue').innerText.toLowerCase();
+  <script>
+    const cues = ['go', 'noGo'];
+    let currentTrial = 0;
+    let score = 0;
 
-            if ((cueType === 'go' && response === 'go') || (cueType === 'no-go' && response === 'no-go')) {
-                score++;
-            } else {
-                score--;
-            }
+    function startGame() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('gameScreen').style.display = 'flex';
+      startNextTrial();
+    }
 
-            trialCount++;
+    function startNextTrial() {
+      const randomIndex = Math.floor(Math.random() * cues.length);
+      const currentCue = cues[randomIndex];
+      document.getElementById('cue').innerText = currentCue.toUpperCase();
+      currentTrial++;
+    }
 
-            document.getElementById('scoreValue').innerText = score;
-            document.getElementById('cue').innerText = '';
+    function checkResponse(response) {
+      const currentCue = document.getElementById('cue').innerText.toLowerCase();
 
-            if (trialCount < 30) {
-                setTimeout(startTrial, 1000);
-            } else {
-                alert('Game Over! Your final score is ' + score);
-            }
-        }
+      if (currentCue === 'go' && response === 'go') {
+        score++;
+      } else if (currentCue === 'noGo' && response === 'noGo') {
+        score--;
+      }
 
-        startTrial();
-    </script>
+      document.getElementById('score').innerText = `Score: ${score}`;
+
+      if (currentTrial < 30) {
+        startNextTrial();
+      } else {
+        endGame();
+      }
+    }
+
+    function endGame() {
+      document.getElementById('gameScreen').style.display = 'none';
+      document.getElementById('endScreen').style.display = 'flex';
+      document.getElementById('finalScore').innerText = score;
+    }
+
+    function restartGame() {
+      currentTrial = 0;
+      score = 0;
+      document.getElementById('endScreen').style.display = 'none';
+      document.getElementById('startScreen').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>
