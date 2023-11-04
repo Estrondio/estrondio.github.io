@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: white;
+            background-color: black;
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -14,32 +15,43 @@
             margin: 0;
         }
 
-        #startButton, #trialSymbol, #trialCounter {
+        #startButton, #trialSymbol, #trialCounter, #rewardDisplay, #timer {
             font-size: 2em;
             margin-bottom: 20px;
         }
 
         #trialSymbol {
             font-weight: bold;
+            font-size: 3em;
         }
 
-        #trialCounter {
+        #timer {
+            font-size: 2.5em;
+            color: #00ff00; /* Green color for the timer */
+        }
+
+        #rewardDisplay {
             font-size: 1.5em;
         }
     </style>
     <script>
         let trialCount = 0;
         let reward = 0;
+        let timer;
 
         function startExperiment() {
             document.getElementById('startButton').style.display = 'none';
             document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
+            document.getElementById('timer').innerText = '5';
 
             // Call your Python backend logic here for each trial
             simulateTrial();
         }
 
         function simulateTrial() {
+            // Reset timer
+            clearInterval(timer);
+
             // Simulate the environment and update trial display
             // Replace this with your actual environment logic
 
@@ -55,31 +67,47 @@
             const trialSymbol = document.getElementById('trialSymbol');
             trialSymbol.innerText = tubeState === "GO" ? "#" : tubeState === "NOGO" ? "*" : "";
 
-            // Simulate user action (replace this with your logic)
-            const userAction = Math.random() < 0.5 ? "Lick" : "Wait";
+            // Start the countdown timer
+            let countdown = 5;
+            timer = setInterval(() => {
+                document.getElementById('timer').innerText = countdown;
+                countdown--;
 
-            // Calculate reward based on user action and tube state
-            if (userAction === "Lick") {
-                if (tubeState === "GO") {
-                    reward += 1;
-                } else if (tubeState === "NOGO") {
-                    reward -= 1;
+                if (countdown < 0) {
+                    clearInterval(timer);
+                    // Simulate user action (replace this with your logic)
+                    const userAction = Math.random() < 0.5 ? "Lick" : "Wait";
+
+                    // Calculate reward based on user action and tube state
+                    if (userAction === "Lick") {
+                        if (tubeState === "GO") {
+                            reward += 1;
+                            document.getElementById('rewardDisplay').innerText = '+1 reward';
+                        } else if (tubeState === "NOGO") {
+                            reward -= 1;
+                            document.getElementById('rewardDisplay').innerText = '-1 reward';
+                        } else {
+                            document.getElementById('rewardDisplay').innerText = '+0 reward';
+                        }
+                    } else {
+                        document.getElementById('rewardDisplay').innerText = '+0 reward';
+                    }
+
+                    // Display reward
+                    document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
+
+                    // Move to the next trial after a delay (1 second)
+                    setTimeout(() => {
+                        trialCount++;
+                        if (trialCount < 15) {
+                            document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
+                            simulateTrial();
+                        } else {
+                            endExperiment();
+                        }
+                    }, 1000);
                 }
-            }
-
-            // Display reward
-            document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
-
-            // Move to the next trial after a delay (5 seconds)
-            setTimeout(() => {
-                trialCount++;
-                if (trialCount < 15) {
-                    document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
-                    simulateTrial();
-                } else {
-                    endExperiment();
-                }
-            }, 5000);
+            }, 1000);
         }
 
         function endExperiment() {
@@ -87,6 +115,7 @@
             document.getElementById('trialCounter').innerText = 'Final Score';
             document.getElementById('trialSymbol').innerText = '';
             document.getElementById('rewardDisplay').innerText = 'Total Reward: ' + reward;
+            document.getElementById('timer').innerText = '';
         }
     </script>
 </head>
@@ -95,5 +124,6 @@
     <div id="trialSymbol"></div>
     <div id="trialCounter"></div>
     <div id="rewardDisplay"></div>
+    <div id="timer"></div>
 </body>
 </html>
