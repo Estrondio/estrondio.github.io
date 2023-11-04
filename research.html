@@ -68,12 +68,68 @@
     /* Set the background color of the footer to black */
     .footer {
       background-color: black;
+    }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar has-shadow is-spaced">
-    <!-- Navbar content -->
-  </nav>
+<nav class="navbar navbar has-shadow is-spaced">
+  <div class="container">
+    <div class="navbar-brand">
+      <script type="text/javascript">
+        // JavaScript function to toggle active class on click
+        function toggleClass(el, target) {
+          el.classList.toggle('is-active');
+          const $target = document.getElementById(target);
+          $target.classList.toggle('is-active');
+        }
+      </script>
+      <!-- Navbar burger icon for mobile -->
+      <a role="button" onclick="toggleClass(this, 'navMenu')" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <!-- Navbar items with Font Awesome icons -->
+        <a class="navbar-item" href="index.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-home"></span>
+          </span>
+          <span>Home</span>
+        </a>
+        <a class="navbar-item" href="about.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-id-card"></span>
+          </span>
+          <span>About</span>
+        </a>
+        <a class="navbar-item" href="research.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-book"></span>
+          </span>
+          <span>Research</span>
+        </a>
+      </div>
+      <div class="navbar-end">
+        <!-- External links with Font Awesome icons -->
+        <a class="navbar-item" href="https://scholar.google.com/citations?user=0giU35cAAAAJ&hl=en">
+          <span class="icon has-text-primary">
+            <span class="ai ai-google-scholar-square"></span>
+          </span>
+          <span>Publications</span>
+        </a>
+        <a class="navbar-item" href="https://linktr.ee/estrondio">
+          <span class="icon has-text-primary">
+            <span class="fa fa-paint-brush"></span>
+          </span>
+          <span>Art</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
 
   <section class="section">
     <div class="container">
