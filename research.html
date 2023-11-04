@@ -23,6 +23,7 @@
         #trialSymbol {
             font-weight: bold;
             font-size: 3em;
+            cursor: pointer; /* Add cursor pointer for interaction */
         }
 
         #timer {
@@ -66,6 +67,10 @@
         function displayTrialSymbol(tubeState) {
             const trialSymbol = document.getElementById('trialSymbol');
             trialSymbol.innerText = tubeState === "GO" ? "#" : tubeState === "NOGO" ? "*" : "";
+            trialSymbol.onclick = function() {
+                clearInterval(timer);
+                nextTrial();
+            };
 
             // Start the countdown timer
             let countdown = 5;
@@ -75,39 +80,45 @@
 
                 if (countdown < 0) {
                     clearInterval(timer);
-                    // Simulate user action (replace this with your logic)
-                    const userAction = Math.random() < 0.5 ? "Lick" : "Wait";
-
-                    // Calculate reward based on user action and tube state
-                    if (userAction === "Lick") {
-                        if (tubeState === "GO") {
-                            reward += 1;
-                            document.getElementById('rewardDisplay').innerText = '+1 reward';
-                        } else if (tubeState === "NOGO") {
-                            reward -= 1;
-                            document.getElementById('rewardDisplay').innerText = '-1 reward';
-                        } else {
-                            document.getElementById('rewardDisplay').innerText = '+0 reward';
-                        }
-                    } else {
-                        document.getElementById('rewardDisplay').innerText = '+0 reward';
-                    }
-
-                    // Display reward
-                    document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
-
-                    // Move to the next trial after a delay (1 second)
-                    setTimeout(() => {
-                        trialCount++;
-                        if (trialCount < 15) {
-                            document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
-                            simulateTrial();
-                        } else {
-                            endExperiment();
-                        }
-                    }, 1000);
+                    endTrial(tubeState);
                 }
             }, 1000);
+        }
+
+        function endTrial(tubeState) {
+            // Simulate user action (replace this with your logic)
+            const userAction = Math.random() < 0.5 ? "Lick" : "Wait";
+
+            // Calculate reward based on user action and tube state
+            if (userAction === "Lick") {
+                if (tubeState === "GO") {
+                    reward += 1;
+                    document.getElementById('rewardDisplay').innerText = '+1 reward';
+                } else if (tubeState === "NOGO") {
+                    reward -= 1;
+                    document.getElementById('rewardDisplay').innerText = '-1 reward';
+                } else {
+                    document.getElementById('rewardDisplay').innerText = '+0 reward';
+                }
+            } else {
+                document.getElementById('rewardDisplay').innerText = '+0 reward';
+            }
+
+            // Display reward
+            document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
+
+            // Move to the next trial after a delay (1 second)
+            setTimeout(nextTrial, 1000);
+        }
+
+        function nextTrial() {
+            trialCount++;
+            if (trialCount < 15) {
+                document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
+                simulateTrial();
+            } else {
+                endExperiment();
+            }
         }
 
         function endExperiment() {
