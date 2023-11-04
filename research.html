@@ -65,19 +65,19 @@
     function startNextTrial() {
       const randomIndex = Math.floor(Math.random() * cues.length);
       const currentCue = cues[randomIndex];
-      document.getElementById('cue').innerText = currentCue.toUpperCase();
+      document.getElementById('cue').innerText = currentCue;
       currentTrial++;
     }
 
     function checkResponse(response) {
-      const currentCue = document.getElementById('cue').innerText.toLowerCase();
+      const currentCue = document.getElementById('cue').innerText;
 
       if (currentCue === 'go' && response === 'go') {
         score++;
-      } else if (currentCue === 'noGo' && response === 'noGo') {
+      } else if (currentCue === 'noGo' && response === 'go') {
         score--;
       }
-
+      
       document.getElementById('score').innerText = `Score: ${score}`;
 
       if (currentTrial < 30) {
