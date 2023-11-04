@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: black;
+            background-color: green; /* Change background color to green */
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 60vh; /* Smaller window for easy integration */
             margin: 0;
         }
 
-        #startButton, #trialSymbol, #trialCounter, #rewardDisplay, #timer {
-            font-size: 2em;
-            margin-bottom: 20px;
+        #startButton {
+            font-size: 1.5em; /* Adjust font size for smaller window */
         }
 
         #trialSymbol {
             font-weight: bold;
             font-size: 3em;
             cursor: pointer; /* Add cursor pointer for interaction */
+            display: inline-block; /* Align with the buttons */
+            margin-bottom: 10px; /* Adjust margin for better spacing */
+        }
+
+        .actionButton {
+            font-size: 1.5em; /* Adjust font size for smaller window */
+            margin: 0 10px; /* Add margin between buttons */
+            padding: 8px 16px; /* Add padding to buttons */
+            cursor: pointer;
+            transition: box-shadow 0.3s ease; /* Add shadow transition on hover */
+        }
+
+        .actionButton:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.8); /* Add shadow on hover */
         }
 
         #timer {
@@ -66,7 +79,7 @@
 
         function displayTrialSymbol(tubeState) {
             const trialSymbol = document.getElementById('trialSymbol');
-            trialSymbol.innerText = tubeState === "GO" ? "#" : tubeState === "NOGO" ? "*" : "";
+            trialSymbol.innerText = tubeState === "GO" ? "" : tubeState === "NOGO" ? "" : "";
             trialSymbol.onclick = function() {
                 clearInterval(timer);
                 nextTrial();
@@ -107,8 +120,12 @@
             // Display reward
             document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
 
-            // Move to the next trial after a delay (1 second)
-            setTimeout(nextTrial, 1000);
+            // Show results screen for 2 seconds
+            setTimeout(() => {
+                document.getElementById('trialSymbol').innerText = '';
+                document.getElementById('rewardDisplay').innerText = '';
+                nextTrial();
+            }, 2000);
         }
 
         function nextTrial() {
@@ -124,17 +141,21 @@
         function endExperiment() {
             // Display final score
             document.getElementById('trialCounter').innerText = 'Final Score';
+            document.getElementById('timer').innerText = '';
             document.getElementById('trialSymbol').innerText = '';
             document.getElementById('rewardDisplay').innerText = 'Total Reward: ' + reward;
-            document.getElementById('timer').innerText = '';
         }
     </script>
 </head>
 <body>
     <button id="startButton" onclick="startExperiment()">START</button>
     <div id="trialSymbol"></div>
+    <div>
+        <button class="actionButton" style="background-color: blue; color: white;" onclick="endTrial('GO')">Blue</button>
+        <button class="actionButton" style="background-color: yellow; color: black;" onclick="endTrial('NOGO')">Yellow</button>
+    </div>
     <div id="trialCounter"></div>
-    <div id="rewardDisplay"></div>
+    <div id="rewardDisplay"></div> 
     <div id="timer"></div>
 </body>
 </html>
