@@ -1,20 +1,99 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr'>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Morais'</title>
-  <link rel="icon" href="media/4.png">
-  <link rel="stylesheet" href="bulma/css/bulma.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #startButton, #trialSymbol, #trialCounter {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #trialSymbol {
+            font-weight: bold;
+        }
+
+        #trialCounter {
+            font-size: 1.5em;
+        }
+    </style>
+    <script>
+        let trialCount = 0;
+        let reward = 0;
+
+        function startExperiment() {
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
+
+            // Call your Python backend logic here for each trial
+            simulateTrial();
+        }
+
+        function simulateTrial() {
+            // Simulate the environment and update trial display
+            // Replace this with your actual environment logic
+
+            // For now, let's just randomly assign GO, NOGO, or CHECK
+            const tubeStates = ["GO", "NOGO", "CHECK"];
+            const randomIndex = Math.floor(Math.random() * tubeStates.length);
+            const tubeState = tubeStates[randomIndex];
+
+            displayTrialSymbol(tubeState);
+        }
+
+        function displayTrialSymbol(tubeState) {
+            const trialSymbol = document.getElementById('trialSymbol');
+            trialSymbol.innerText = tubeState === "GO" ? "#" : tubeState === "NOGO" ? "*" : "";
+
+            // Simulate user action (replace this with your logic)
+            const userAction = Math.random() < 0.5 ? "Lick" : "Wait";
+
+            // Calculate reward based on user action and tube state
+            if (userAction === "Lick") {
+                if (tubeState === "GO") {
+                    reward += 1;
+                } else if (tubeState === "NOGO") {
+                    reward -= 1;
+                }
+            }
+
+            // Display reward
+            document.getElementById('rewardDisplay').innerText = 'Reward: ' + reward;
+
+            // Move to the next trial after a delay (5 seconds)
+            setTimeout(() => {
+                trialCount++;
+                if (trialCount < 15) {
+                    document.getElementById('trialCounter').innerText = 'Trial ' + (trialCount + 1);
+                    simulateTrial();
+                } else {
+                    endExperiment();
+                }
+            }, 5000);
+        }
+
+        function endExperiment() {
+            // Display final score
+            document.getElementById('trialCounter').innerText = 'Final Score';
+            document.getElementById('trialSymbol').innerText = '';
+            document.getElementById('rewardDisplay').innerText = 'Total Reward: ' + reward;
+        }
+    </script>
 </head>
-<body> 
-    <div class="content">
-        <!-- Add a quote below the photo -->
-          <!-- Image with 100% width -->
-          <img src="media\undery.gif" style="width:100%"></img>
-          <div class="quote">
-            "Under development" <p>  —  Last Update: 18/10/2023</p>
-          </div>
-      </div>
+<body>
+    <button id="startButton" onclick="startExperiment()">START</button>
+    <div id="trialSymbol"></div>
+    <div id="trialCounter"></div>
+    <div id="rewardDisplay"></div>
+</body>
+</html>
