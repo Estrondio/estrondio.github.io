@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr'>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,9 +11,9 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <style>
     .navbar-item .icon {
-      color: rgb(73, 112, 119) !important; /* Ensure that the color is visible in dark and light: dark green (73, 112, 119) */
-    /* Add custom styles for the black bars */
-  }
+      color: rgb(73, 112, 119) !important;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -20,125 +21,111 @@
       color: white;
     }
 
-    /* Title style */
     h1.title {
       font-family: 'Times New Roman', serif;
-      font-size: 2.7em; /* Adjust size as needed */
-      color: rgb(177, 177, 177) !important; /* Ensure that the color is white */
+      font-size: 2.7em;
+      color: rgb(177, 177, 177) !important;
       margin-bottom: -1em;
     }
 
-    /* Subtitle style */
     h2.subtitle {
       font-family: 'Times New Roman', sans-serif;
       color: rgb(177, 177, 177);
       margin-top: 0.0em;
     }
 
-    /* Surubtitle style */
-    h3.surubtitle {
-      font-family: 'Times New Roman', sans-serif;
-      color: rgb(255, 255, 255);
-    }
-
-    /* Quote styles */
     .quote {
       font-family: 'Century Gothic', sans-serif;
-      font-size: 1.0em; /* Adjust size as needed */
+      font-size: 1.0em;
       color: white;
       text-align: center;
     }
 
-    /* Surubtitle style */
-    h3.footmedia{
-      font-family: 'Century Gothic', sans-serif;
-      color: rgb(255, 255, 255);
-    }
-    /* Set the background color of the navbar to black */
     .navbar {
       background-color: black;
       margin-bottom: 0;
     }
 
-    /* Set the text color of navbar items to white */
     .navbar-item {
       color: rgb(73, 112, 119);
     }
 
-    /* Set the background color of the footer to black */
     .footer {
       background-color: black;
     }
+
+    /* Center the widget horizontally */
+    #widget-container {
+      display: flex;
+      justify-content: center;
+    }
   </style>
 </head>
-<body>
-<nav class="navbar navbar has-shadow is-spaced">
-  <div class="container">
-    <div class="navbar-brand">
-      <script type="text/javascript">
-        // JavaScript function to toggle active class on click
-        function toggleClass(el, target) {
-          el.classList.toggle('is-active');
-          const $target = document.getElementById(target);
-          $target.classList.toggle('is-active');
-        }
-      </script>
-      <!-- Navbar burger icon for mobile -->
-      <a role="button" onclick="toggleClass(this, 'navMenu')" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div class="navbar-menu" id="navMenu">
-      <div class="navbar-start">
-        <!-- Navbar items with Font Awesome icons -->
-        <a class="navbar-item" href="index.html">
-          <span class="icon has-text-primary">
-            <span class="fa fa-home"></span>
-          </span>
-          <span>Home</span>
-        </a>
-        <a class="navbar-item" href="about.html">
-          <span class="icon has-text-primary">
-            <span class="fa fa-id-card"></span>
-          </span>
-          <span>About</span>
-        </a>
-        <a class="navbar-item" href="research.html">
-          <span class="icon has-text-primary">
-            <span class="fa fa-book"></span>
-          </span>
-          <span>Research</span>
-        </a>
-      </div>
-      <div class="navbar-end">
-        <!-- External links with Font Awesome icons -->
-        <a class="navbar-item" href="https://scholar.google.com/citations?user=0giU35cAAAAJ&hl=en">
-          <span class="icon has-text-primary">
-            <span class="ai ai-google-scholar-square"></span>
-          </span>
-          <span>Publications</span>
-        </a>
-        <a class="navbar-item" href="https://linktr.ee/estrondio">
-          <span class="icon has-text-primary">
-            <span class="fa fa-paint-brush"></span>
-          </span>
-          <span>Art</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</nav>
 
+<body>
+  <nav class="navbar navbar has-shadow is-spaced">
+    <div class="container">
+      <div class="navbar-brand">
+        <script type="text/javascript">
+          function toggleClass(el, target) {
+            el.classList.toggle('is-active');
+            const $target = document.getElementById(target);
+            $target.classList.toggle('is-active');
+          }
+        </script>
+        <a role="button" onclick="toggleClass(this, 'navMenu')" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">
+            <span class="icon has-text-primary">
+              <span class="fa fa-home"></span>
+            </span>
+            <span>Home</span>
+          </a>
+          <a class="navbar-item" href="about.html">
+            <span class="icon has-text-primary">
+              <span class="fa fa-id-card"></span>
+            </span>
+            <span>About</span>
+          </a>
+          <a class="navbar-item" href="research.html">
+            <span class="icon has-text-primary">
+              <span class="fa fa-book"></span>
+            </span>
+            <span>Research</span>
+          </a>
+        </div>
+        <div class="navbar-end">
+          <a class="navbar-item" href="https://scholar.google.com/citations?user=0giU35cAAAAJ&hl=en">
+            <span class="icon has-text-primary">
+              <span class="ai ai-google-scholar-square"></span>
+            </span>
+            <span>Publications</span>
+          </a>
+          <a class="navbar-item" href="https://linktr.ee/estrondio">
+            <span class="icon has-text-primary">
+              <span class="fa fa-paint-brush"></span>
+            </span>
+            <span>Art</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
   <section class="section">
     <div class="container">
       <header>
-        <h1 class="title">The Go/NoGo Task</h1>
+        <h1 class="title">
+          The Go/NoGo Task
+        </h1>
       </header>
     </div>
   </section>
-
   <section class="section">
     <div class="container">
       <div class="columns">
@@ -150,111 +137,109 @@
             <p>
               In the Go/NoGo task, a "Go" cue signals the participant to perform a certain action, while a "NoGo" cue requires the participant to withhold that action. This task is valuable in understanding cognitive functions related to response inhibition and impulsivity.
             </p>
+            <!-- Center the widget horizontally -->
+            <div id="widget-container">
+              <div>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                  body {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh;
+                    font-family: Arial, sans-serif;
+                  }
 
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
+                  #cue {
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                  }
 
-    #cue {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+                  #score {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                  }
 
-    #score {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+                  button {
+                    font-size: 16px;
+                    margin: 10px;
+                    padding: 10px;
+                    cursor: pointer;
+                  }
+                </style>
+                <title>Go/No-Go Task</title>
+              </head>
+              <body>
+                <div id="startScreen">
+                  <h1>Go/No-Go Task</h1>
+                  <button onclick="startGame()">Start</button>
+                </div>
 
-    button {
-      font-size: 16px;
-      margin: 10px;
-      padding: 10px;
-      cursor: pointer;
-    }
-  </style>
-  <title>Go/No-Go Task</title>
-</head>
-<body>
-  <div id="startScreen">
-    <h1>Go/No-Go Task</h1>
-    <button onclick="startGame()">Start</button>
-  </div>
+                <div id="gameScreen" style="display: none;">
+                  <div id="cue">Get ready...</div>
+                  <button id="goButton" onclick="checkResponse('go')">Go</button>
+                  <button id="noGoButton" onclick="checkResponse('noGo')">No-Go</button>
+                  <div id="score">Score: 0</div>
+                </div>
 
-  <div id="gameScreen" style="display: none;">
-    <div id="cue">Get ready...</div>
-    <button id="goButton" onclick="checkResponse('go')">Go</button>
-    <button id="noGoButton" onclick="checkResponse('noGo')">No-Go</button>
-    <div id="score">Score: 0</div>
-  </div>
+                <div id="endScreen" style="display: none;">
+                  <h1>Game Over!</h1>
+                  <p>Your final score is <span id="finalScore">0</span></p>
+                  <button onclick="restartGame()">Restart</button>
+                </div>
 
-  <div id="endScreen" style="display: none;">
-    <h1>Game Over!</h1>
-    <p>Your final score is <span id="finalScore">0</span></p>
-    <button onclick="restartGame()">Restart</button>
-  </div>
+                <script>
+                  const cues = ['go', 'noGo'];
+                  let currentTrial = 0;
+                  let score = 0;
 
-  <script>
-    const cues = ['go', 'noGo'];
-    let currentTrial = 0;
-    let score = 0;
+                  function startGame() {
+                    document.getElementById('startScreen').style.display = 'none';
+                    document.getElementById('gameScreen').style.display = 'flex';
+                    startNextTrial();
+                  }
 
-    function startGame() {
-      document.getElementById('startScreen').style.display = 'none';
-      document.getElementById('gameScreen').style.display = 'flex';
-      startNextTrial();
-    }
+                  function startNextTrial() {
+                    const randomIndex = Math.floor(Math.random() * cues.length);
+                    const currentCue = cues[randomIndex];
+                    document.getElementById('cue').innerText = currentCue;
+                    currentTrial++;
+                  }
 
-    function startNextTrial() {
-      const randomIndex = Math.floor(Math.random() * cues.length);
-      const currentCue = cues[randomIndex];
-      document.getElementById('cue').innerText = currentCue;
-      currentTrial++;
-    }
+                  function checkResponse(response) {
+                    const currentCue = document.getElementById('cue').innerText;
 
-    function checkResponse(response) {
-      const currentCue = document.getElementById('cue').innerText;
+                    if (currentCue === 'go' && response === 'go') {
+                      score++;
+                    } else if (currentCue === 'noGo' && response === 'go') {
+                      score--;
+                    }
 
-      if (currentCue === 'go' && response === 'go') {
-        score++;
-      } else if (currentCue === 'noGo' && response === 'go') {
-        score--;
-      }
-      
-      document.getElementById('score').innerText = `Score: ${score}`;
+                    document.getElementById('score').innerText = `Score: ${score}`;
 
-      if (currentTrial < 30) {
-        startNextTrial();
-      } else {
-        endGame();
-      }
-    }
+                    if (currentTrial < 30) {
+                      startNextTrial();
+                    } else {
+                      endGame();
+                    }
+                  }
 
-    function endGame() {
-      document.getElementById('gameScreen').style.display = 'none';
-      document.getElementById('endScreen').style.display = 'flex';
-      document.getElementById('finalScore').innerText = score;
-    }
+                  function endGame() {
+                    document.getElementById('gameScreen').style.display = 'none';
+                    document.getElementById('endScreen').style.display = 'flex';
+                    document.getElementById('finalScore').innerText = score;
+                  }
 
-    function restartGame() {
-      currentTrial = 0;
-      score = 0;
-      document.getElementById('endScreen').style.display = 'none';
-      document.getElementById('startScreen').style.display = 'flex';
-    }
-  </script>
-</body>
-</html>
+                  function restartGame() {
+                    currentTrial = 0;
+                    score = 0;
+                    document.getElementById('endScreen').style.display = 'none';
+                    document.getElementById('startScreen').style.display = 'flex';
+                  }
+                </script>
+              </div>
+            </div>
 
             <div class="quote">
               Legend: Click "Go" for a "Go" cue and "No-Go" for a "NoGo" cue.
@@ -275,4 +260,5 @@
     </div>
   </footer>
 </body>
+
 </html>
