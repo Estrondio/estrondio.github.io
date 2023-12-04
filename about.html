@@ -8,14 +8,205 @@
   <link rel="stylesheet" href="bulma/css/bulma.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <style>
+    .navbar-item .icon {
+      color: rgb(73, 112, 119) !important; /* Ensure that the color is visible in dark and light: dark green (73, 112, 119) */
+    /* Add custom styles for the black bars */
+  }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+
+    /* Title style */
+    h1.title {
+      font-family: 'Times New Roman', serif;
+      font-size: 2.7em; /* Adjust size as needed */
+      color: rgb(177, 177, 177) !important; /* Ensure that the color is white */
+      margin-bottom: -1em;
+    }
+
+    /* Subtitle style */
+    h2.subtitle {
+      font-family: 'Times New Roman', sans-serif;
+      color: rgb(177, 177, 177);
+      margin-top: 0.0em;
+    }
+
+    /* Surubtitle style */
+    h3.surubtitle {
+      font-family: 'Times New Roman', sans-serif;
+      color: rgb(255, 255, 255);
+    }
+
+    /* Quote styles */
+    .quote {
+      font-family: 'Century Gothic', sans-serif;
+      font-size: 1.0em; /* Adjust size as needed */
+      color: white;
+      text-align: center;
+    }
+
+    /* Surubtitle style */
+    h3.footmedia{
+      font-family: 'Century Gothic', sans-serif;
+      color: rgb(255, 255, 255);
+    }
+    /* Set the background color of the navbar to black */
+    .navbar {
+      background-color: black;
+      margin-bottom: 0;
+    }
+
+    /* Set the text color of navbar items to white */
+    .navbar-item {
+      color: rgb(73, 112, 119);
+    }
+
+    /* Set the background color of the footer to black */
+    .footer {
+      background-color: black;
+    }
+  </style>
 </head>
-<body> 
-    <div class="content">
-        <!-- Add a quote below the photo -->
-          <!-- Image with 100% width -->
-          <img src="media\undery.gif" style="width:100%"></img>
-          <div class="quote">
-            "Under development" <p>  —  Last Update: 18/10/2023</p>
+<body> <!-- Remove inline styles for background color -->
+<nav class="navbar navbar has-shadow is-spaced">
+  <div class="container">
+    <div class="navbar-brand">
+      <script type="text/javascript">
+        // JavaScript function to toggle active class on click
+        function toggleClass(el, target) {
+          el.classList.toggle('is-active');
+          const $target = document.getElementById(target);
+          $target.classList.toggle('is-active');
+        }
+      </script>
+      <!-- Navbar burger icon for mobile -->
+      <a role="button" onclick="toggleClass(this, 'navMenu')" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <!-- Navbar items with Font Awesome icons -->
+        <a class="navbar-item" href="index.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-home"></span>
+          </span>
+          <span>Home</span>
+        </a>
+        <a class="navbar-item" href="about.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-id-card"></span>
+          </span>
+          <span>About</span>
+        </a>
+        <a class="navbar-item" href="research.html">
+          <span class="icon has-text-primary">
+            <span class="fa fa-book"></span>
+          </span>
+          <span>Research</span>
+        </a>
+      </div>
+      <div class="navbar-end">
+        <!-- External links with Font Awesome icons -->
+        <a class="navbar-item" href="https://scholar.google.com/citations?user=0giU35cAAAAJ&hl=en">
+          <span class="icon has-text-primary">
+            <span class="ai ai-google-scholar-square"></span>
+          </span>
+          <span>Publications</span>
+        </a>
+        <a class="navbar-item" href="https://linktr.ee/estrondio">
+          <span class="icon has-text-primary">
+            <span class="fa fa-paint-brush"></span>
+          </span>
+          <span>Art</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="section">
+  <div class="container">
+    <header>
+      <!-- Customize the main title -->
+        <!-- Main title -->
+        <h1 class="title">
+          About Me
+        </h1>
+    </header>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+  <div class="columns">
+      <div class="column">
+          <div class="content">
+            <!-- Add a quote below the photo -->
+              <!-- Image with 100% width -->
+              <img src="media/About.png" style="width:100%"alt="João P Morais photo"></img>
+              <div class="quote">
+                ""What's past is prologue"" <p>  —  William Shakespear</p>
+              </div>
           </div>
       </div>
-  
+      <div class="column">
+          <div class="content">
+            <!-- Customize other content -->
+              <!-- Curriculum Vitae and list of likes -->
+              <h2 class="subtitle"> FAQ: </h2>
+              <ul class="is-size-5">
+                <li><b>Who are you?</b> I am Neurobiology MSc. who is passionate
+                   about the systemic study of higher cognitive functions.
+                   </li>
+                <li><b>What are your Hobbies?</b> I like read, to sing, to play guitar and piano,
+                   to draw, to run and, recently, to work on some personal python projects.
+                Most of all, I like to spend time with friends, family and colleagues.</li>
+                <li><b>How would you describe yourself</b> I see myself as 
+                  very creative, communicative and curious person. I would say that I am always smiling and 
+                  excited about exploring some topic or developing a project. I can stay engaged and motivated in
+                   a single task over long periods of time. That being said, I do thrive in environments where
+                   feedback is available so I can keep the overarching goal in focus.
+                </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <!-- Footer text with icons and links -->
+    <p>
+      <a href="https://github.com/Estrondio" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-github"></i> Code  
+      </a>
+         
+      <a href="https://instagram.com/estrondio" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-instagram"></i> Insta  
+      </a>
+         
+      <a href="https://linkedin.com/in/joaopfmorais" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-linkedin"></i> Linkedin  
+      </a>
+         
+      <a href="https://goodreads.com/user/show/50130199-jo-o-morais" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-goodreads"></i> Book Reviews  
+      </a>
+         
+      <a href="https://togetherwefiretogetherwewire.wordpress.com" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-wordpress"></i> Science Blog  
+      </a>
+         
+      <a href="https://deviantart.com/estrondio" target="_blank" style="color:rgb(39,63,109); font-size: 20px; font-family: 'Century Gothic', sans-serif;">
+        <i class="fab fa-deviantart"></i> Art Portfolio  
+      </a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
